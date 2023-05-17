@@ -1,0 +1,5 @@
+---
+deployment:
+    tasks:
+        - export DEPLOYPATH=/home/ussander/opencart/
+        - /bin/cp -R upload/. $DEPLOYPATH
