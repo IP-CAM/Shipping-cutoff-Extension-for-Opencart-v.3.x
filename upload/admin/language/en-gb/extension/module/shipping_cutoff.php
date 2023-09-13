@@ -22,6 +22,7 @@ $_['entry_days']       = 'Shipping Days';
 $_['entry_message']    = 'Message';
 $_['entry_format']     = 'Date Format';
 $_['entry_status']     = 'Status';
+$_['entry_debug']      = 'Debug Log';
 
 // Help
 $_['help_time']        = 'Order cutoff time to ship same day (in GMT time)';

@@ -95,6 +95,12 @@ class ControllerExtensionModuleShippingCutoff extends Controller {
 		} else {
 			$data['module_shipping_cutoff_status'] = $this->config->get('module_shipping_cutoff_status');
 		}
+		
+		if (isset($this->request->post['module_shipping_cutoff_debug'])) {
+			$data['module_shipping_cutoff_debug'] = $this->request->post['module_shipping_cutoff_debug'];
+		} else {
+			$data['module_shipping_cutoff_debug'] = $this->config->get('module_shipping_cutoff_debug');
+		}
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
