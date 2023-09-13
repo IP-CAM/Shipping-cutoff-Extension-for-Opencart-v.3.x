@@ -36,12 +36,16 @@ class controllerExtensionEventShippingCutoff extends Controller {
 	    if($this->config->get('module_shipping_cutoff_status')) {
 		    // check if this is a shipping day
 			if(!in_array(date('N'),$this->config->get('module_shipping_cutoff_days'))) {
-				$this->log->write(date('N').' (today) is not a shipping day');
+				if($this->config->get('module_shipping_cutoff_debug')) {
+					$this->log->write(date('N').' (today) is not a shipping day');
+				}
 				return true;
 			}
 			// check if past cutoff time
 			if(time() > strtotime($this->config->get('module_shipping_cutoff_time'))) {
-				$this->log->write(time().' is after cutoff time of '.strtotime($this->config->get('module_shipping_cutoff_time')));
+				if($this->config->get('module_shipping_cutoff_debug')) {
+					$this->log->write(time().' is after cutoff time of '.strtotime($this->config->get('module_shipping_cutoff_time')));
+				}
 				return true;
 			}
 	    }
@@ -55,9 +59,13 @@ class controllerExtensionEventShippingCutoff extends Controller {
 			$day++;
 			$i++;
 			if($day > 7) $day = 1;
-			$this->log->write('Checking if shipping '.$day);
+			if($this->config->get('module_shipping_cutoff_debug')) {
+				$this->log->write('Checking if shipping '.$day);
+			}
 			if(in_array($day,$this->config->get('module_shipping_cutoff_days'))) {
-				$this->log->write($day.' is a shipping day');
+				if($this->config->get('module_shipping_cutoff_debug')) {
+					$this->log->write($day.' is a shipping day');
+				}
 				break;
 			}
 		}
